@@ -99,7 +99,7 @@
             android:layout_marginRight="32dp"
             android:layout_marginBottom="32dp"
             android:text="SAVE"
-            app:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white"
             app:backgroundTintMode="add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,6 +127,7 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginRight="0dp"
+                android:visibility="invisible"
                 app:singleLine="true"
                 app:singleSelection="true">
 
@@ -212,6 +213,7 @@
                 android:layout_marginLeft="0dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginRight="0dp"
+                android:visibility="invisible"
                 app:singleLine="true"
                 app:singleSelection="true">
 
@@ -298,6 +300,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
+
+        <ProgressBar
+            android:id="@+id/progressBarWords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/horizontalScrollView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

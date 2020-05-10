@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "384034745051",
+    "firebase_url": "https://poetry-maker.firebaseio.com",
+    "project_id": "poetry-maker",
+    "storage_bucket": "poetry-maker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384034745051:android:5b7eb4283c9314252bbafe",
+        "android_client_info": {
+          "package_name": "com.dhirajchhabra.poetrymaker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384034745051-jb752tuo127rr3jkfh5ru78vc6enknet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dhirajchhabra.poetrymaker",
+            "certificate_hash": "9a41f34799982acc840a7456f795ae4d051db792"
+          }
+        },
+        {
+          "client_id": "384034745051-iplekrvde0dg2ruthkvo0801kgnc9bgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY9dctEw4cyJ495CNA-UgfSHzFtlEvO0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384034745051-iplekrvde0dg2ruthkvo0801kgnc9bgp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -54,6 +55,7 @@ public class PoetryCreatingActivity extends AppCompatActivity implements OnCurso
     private EditTextCursorWatcher poemWritingEditText;
     private String selectedGenre, lastWordBeforeSpace;
     private int indexForAfterWord, indexForBeforeWord;
+    private ProgressBar progressBarWords;
 
     final long delay = 1000; // 1 seconds after user stops typing
     private long last_text_edit_time = 0;
@@ -81,6 +83,8 @@ public class PoetryCreatingActivity extends AppCompatActivity implements OnCurso
 
         saveButton = findViewById(R.id.saveButton);
 
+        progressBarWords = findViewById(R.id.progressBarWords);
+
         Poetry poem = null;
 
         if (poetry != null) {
@@ -104,13 +108,15 @@ public class PoetryCreatingActivity extends AppCompatActivity implements OnCurso
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                saveButton.setEnabled(false);
                 PoetryViewModel poetryViewModel = ViewModelProviders.of(PoetryCreatingActivity.this).get(PoetryViewModel.class);
                 poetryViewModel.initialize();
                 if (finalPoem != null) {
-                    poetryViewModel.makeNetworkCallForUpdatingPoetry(finalPoem.getPoetryId(), finalPoem.getTitle(), finalPoem.getGenre(), finalPoem.getBody(), finalPoem.getFontColor(), finalPoem.getFontStyle(), finalPoem.getFontSize(), finalPoem.getFontSize(), finalPoem.getItalic(), finalPoem.getUnderline()).observe(PoetryCreatingActivity.this, new Observer<String>() {
+                    poetryViewModel.makeNetworkCallForUpdatingPoetry(finalPoem.getPoetryId(), finalPoem.getTitle(), finalPoem.getGenre(), finalPoem.getBody()).observe(PoetryCreatingActivity.this, new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
                             if (s != null) {
+                                saveButton.setEnabled(true);
                                 Toast.makeText(PoetryCreatingActivity.this, "Poem Details updated", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -120,6 +126,7 @@ public class PoetryCreatingActivity extends AppCompatActivity implements OnCurso
                         @Override
                         public void onChanged(String s) {
                             if (s != null) {
+                                saveButton.setEnabled(true);
                                 Toast.makeText(PoetryCreatingActivity.this, "New Poem Created", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -247,6 +254,9 @@ public class PoetryCreatingActivity extends AppCompatActivity implements OnCurso
                         chipsAfter.get(i).setText(afterWordsList.get(i));
                     }
 
+                    progressBarWords.setVisibility(View.GONE);
+                    beforeWordsPoetryChipGroup.setVisibility(View.VISIBLE);
+                    afterWordsPoetryChipGroup.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -259,6 +269,10 @@ public class PoetryCreatingActivity extends AppCompatActivity implements OnCurso
         this.lastWordBeforeSpace = lastWordBeforeSpace;
         this.indexForAfterWord = indexForAfterWord;
         this.indexForBeforeWord = indexForBeforeWord;
+
+        this.progressBarWords.setVisibility(View.VISIBLE);
+        this.beforeWordsPoetryChipGroup.setVisibility(View.INVISIBLE);
+        this.afterWordsPoetryChipGroup.setVisibility(View.INVISIBLE);
 
         Log.e("TAG", "onChangeDetected: " + lastWordBeforeSpace + " " + indexForAfterWord + " " + indexForBeforeWord);
 

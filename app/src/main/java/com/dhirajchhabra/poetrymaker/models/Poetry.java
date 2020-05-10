@@ -19,24 +19,6 @@ public class Poetry implements Parcelable {
     @SerializedName("body")
     private String body;
 
-    @SerializedName("bold")
-    private String bold;
-
-    @SerializedName("fontColor")
-    private String fontColor;
-
-    @SerializedName("fontStyle")
-    private String fontStyle;
-
-    @SerializedName("fontSize")
-    private String fontSize;
-
-    @SerializedName("italic")
-    private String italic;
-
-    @SerializedName("underline")
-    private String underline;
-
     public Poetry() {
     }
 
@@ -45,12 +27,6 @@ public class Poetry implements Parcelable {
         title = in.readString();
         genre = in.readString();
         body = in.readString();
-        bold = in.readString();
-        fontColor = in.readString();
-        fontStyle = in.readString();
-        fontSize = in.readString();
-        italic = in.readString();
-        underline = in.readString();
     }
 
     public static final Creator<Poetry> CREATOR = new Creator<Poetry>() {
@@ -97,54 +73,6 @@ public class Poetry implements Parcelable {
         this.body = body;
     }
 
-    public String getBold() {
-        return bold;
-    }
-
-    public void setBold(String bold) {
-        this.bold = bold;
-    }
-
-    public String getFontColor() {
-        return fontColor;
-    }
-
-    public void setFontColor(String fontColor) {
-        this.fontColor = fontColor;
-    }
-
-    public String getFontStyle() {
-        return fontStyle;
-    }
-
-    public void setFontStyle(String fontStyle) {
-        this.fontStyle = fontStyle;
-    }
-
-    public String getFontSize() {
-        return fontSize;
-    }
-
-    public void setFontSize(String fontSize) {
-        this.fontSize = fontSize;
-    }
-
-    public String getItalic() {
-        return italic;
-    }
-
-    public void setItalic(String italic) {
-        this.italic = italic;
-    }
-
-    public String getUnderline() {
-        return underline;
-    }
-
-    public void setUnderline(String underline) {
-        this.underline = underline;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -152,6 +80,9 @@ public class Poetry implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeString(poetryId);
+        dest.writeString(title);
+        dest.writeString(genre);
+        dest.writeString(body);
     }
 }

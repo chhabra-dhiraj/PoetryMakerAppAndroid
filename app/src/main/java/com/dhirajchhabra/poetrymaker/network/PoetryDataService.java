@@ -18,13 +18,7 @@ public interface PoetryDataService {
     Call<String> createPoetry(@Query("userId") String userId,
                               @Field("title") String title,
                               @Field("genre") String genre,
-                              @Field("body") String body,
-                              @Field("bold") String bold,
-                              @Field("fontColor") String fontColor,
-                              @Field("fontStyle") String fontStyle,
-                              @Field("fontSize") String fontSize,
-                              @Field("italic") String italic,
-                              @Field("underline") String underline);
+                              @Field("body") String body);
 
     //update a particular student's details of a particular school
     @FormUrlEncoded
@@ -32,13 +26,7 @@ public interface PoetryDataService {
     Call<String> updatePoetryById(@Path("id") String id,
                                   @Field("title") String title,
                                   @Field("genre") String genre,
-                                  @Field("body") String body,
-                                  @Field("bold") String bold,
-                                  @Field("fontColor") String fontColor,
-                                  @Field("fontStyle") String fontStyle,
-                                  @Field("fontSize") String fontSize,
-                                  @Field("italic") String italic,
-                                  @Field("underline") String underline);
+                                  @Field("body") String body);
 
     //delete particular students of a particular school
     @DELETE("poetries/{id}")

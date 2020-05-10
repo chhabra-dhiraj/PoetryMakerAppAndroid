@@ -41,6 +41,7 @@ public class PoetriesRecyclerViewAdapter extends RecyclerView.Adapter<PoetriesRe
             titleText = v.findViewById(R.id.titleText);
             genreText = v.findViewById(R.id.genreText);
             cvFab = v.findViewById(R.id.cvFab);
+
         }
     }
 

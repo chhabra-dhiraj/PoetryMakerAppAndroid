@@ -34,7 +34,7 @@ public class PoetryRepository {
 
     public LiveData<String> makeNetworkCallForCreatingPoetry(String userId, String title, String genre, String body, String bold, String fontColor, String fontStyle, String fontSize, String italic, String underline) {
 
-        Call<String> callCreatePoetry = poetryDataService.createPoetry(userId, title, genre, body, bold, fontColor, fontStyle, fontSize, italic, underline);
+        Call<String> callCreatePoetry = poetryDataService.createPoetry(userId, title, genre, body);
         callCreatePoetry.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -59,9 +59,9 @@ public class PoetryRepository {
         return createResponseStatus;
     }
 
-    public LiveData<String> makeNetworkCallForUpdatingPoetry(String id, String title, String genre, String body, String bold, String fontColor, String fontStyle, String fontSize, String italic, String underline) {
+    public LiveData<String> makeNetworkCallForUpdatingPoetry(String id, String title, String genre, String body) {
 
-        Call<String> callUpdatePoetry = poetryDataService.updatePoetryById(id, title, genre, body, bold, fontColor, fontStyle, fontSize, italic, underline);
+        Call<String> callUpdatePoetry = poetryDataService.updatePoetryById(id, title, genre, body);
         callUpdatePoetry.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

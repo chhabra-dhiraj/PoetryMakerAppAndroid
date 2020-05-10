@@ -31,8 +31,8 @@ public class PoetryViewModel extends ViewModel {
         return createResponseStatus;
     }
 
-    public LiveData<String> makeNetworkCallForUpdatingPoetry(String id, String title, String genre, String body, String bold, String fontColor, String fontStyle, String fontSize, String italic, String underline) {
-        updateResponseStatus = poetryRepository.makeNetworkCallForUpdatingPoetry(id, title, genre, body, bold, fontColor, fontStyle, fontSize, italic, underline);
+    public LiveData<String> makeNetworkCallForUpdatingPoetry(String id, String title, String genre, String body) {
+        updateResponseStatus = poetryRepository.makeNetworkCallForUpdatingPoetry(id, title, genre, body);
         return updateResponseStatus;
     }
 

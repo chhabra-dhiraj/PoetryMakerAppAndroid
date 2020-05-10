@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.dhirajchhabra.poetrymaker.MyApplication;
 import com.dhirajchhabra.poetrymaker.R;
@@ -25,11 +27,14 @@ import java.util.List;
 public class FirebaseUIActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
+    private ProgressBar progressBarLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_ui);
+
+        progressBarLogin = findViewById(R.id.progressBarLogin);
 
         createSignInIntent();
     }
@@ -48,6 +53,7 @@ public class FirebaseUIActivity extends AppCompatActivity {
                         .setAvailableProviders(providers)
                         .build(),
                 RC_SIGN_IN);
+
         // [END auth_fui_create_intent]
     }
 
@@ -60,6 +66,7 @@ public class FirebaseUIActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
+                progressBarLogin.setVisibility(View.VISIBLE);
                 // Successfully signed in
                 createUser();
 

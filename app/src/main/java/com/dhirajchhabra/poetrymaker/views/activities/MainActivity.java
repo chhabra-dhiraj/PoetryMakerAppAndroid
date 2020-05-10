@@ -28,9 +28,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.dhirajchhabra.poetrymaker.R;
 import com.google.android.material.textview.MaterialTextView;
@@ -128,9 +126,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.profile:
-                Intent intent = new Intent(this, ProfileActivity.class);
-                return true;
             case R.id.aboutUs:
                 return true;
             case R.id.logout:
@@ -156,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+
         // [END auth_fui_signout]
     }
 }
