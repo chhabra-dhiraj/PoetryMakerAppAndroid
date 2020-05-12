@@ -6,27 +6,17 @@ import java.util.ArrayList;
 
 public class Poem {
 
-    @SerializedName("beforeWords")
-    private ArrayList<String> beforeWords;
-    @SerializedName("afterWords")
-    private ArrayList<String> afterWords;
+    @SerializedName("sentencesList")
+    private ArrayList<SentenceDetails> sentences;
 
     public Poem() {
     }
 
-    public ArrayList<String> getBeforeWords() {
-        return beforeWords;
+    public ArrayList<SentenceDetails> getSentences() {
+        return sentences;
     }
 
-    public void setBeforeWords(ArrayList<String> beforeWords) {
-        this.beforeWords = beforeWords;
-    }
-
-    public ArrayList<String> getAfterWords() {
-        return afterWords;
-    }
-
-    public void setAfterWords(ArrayList<String> afterWords) {
-        this.afterWords = afterWords;
+    public void setSentences(ArrayList<SentenceDetails> sentences) {
+        this.sentences = sentences;
     }
 }

@@ -1,29 +1,21 @@
 package com.dhirajchhabra.poetrymaker.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.dhirajchhabra.poetrymaker.MyApplication;
 import com.dhirajchhabra.poetrymaker.R;
 import com.dhirajchhabra.poetrymaker.models.Poem;
 import com.dhirajchhabra.poetrymaker.models.Poetry;
+import com.dhirajchhabra.poetrymaker.models.SentenceDetails;
 import com.dhirajchhabra.poetrymaker.viewmodels.PoemViewModel;
 import com.dhirajchhabra.poetrymaker.viewmodels.PoetryViewModel;
 import com.dhirajchhabra.poetrymaker.views.adapters.PoetriesRecyclerViewAdapter;
@@ -33,9 +25,6 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.gson.Gson;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -50,7 +39,7 @@ public class PoetryCreatingActivity extends AppCompatActivity implements OnCurso
     private ChipGroup afterWordsPoetryChipGroup;
     private ChipGroup beforeWordsPoetryChipGroup;
     private Chip chip1, chip2, chip3, chip4, chip5, chip6, chip7, chip8, chip9, chip10;
-    ArrayList<String> afterWordsList, beforeWordsList;
+    ArrayList<SentenceDetails> afterWordsList, beforeWordsList;
     //    private ProgressBar fetchingSuggestionsProgressBar;
     private EditTextCursorWatcher poemWritingEditText;
     private String selectedGenre, lastWordBeforeSpace;
@@ -231,32 +220,32 @@ public class PoetryCreatingActivity extends AppCompatActivity implements OnCurso
                 if (poem != null) {
                     // do anything with response
 
-                    afterWordsList.clear();
+//                    afterWordsList.clear();
                     beforeWordsList.clear();
-                    afterWordsList.addAll(poem.getAfterWords());
-                    beforeWordsList.addAll(poem.getBeforeWords());
+//                    afterWordsList.addAll(poem.getAfterWords());
+                    beforeWordsList.addAll(poem.getSentences());
 
                     int afterSize = 5;
-                    if(afterWordsList.size() < 5) {
+                    if (afterWordsList.size() < 5) {
                         afterSize = afterWordsList.size();
                     }
 
                     int beforeSize = 5;
-                    if(beforeWordsList.size() < 5) {
+                    if (beforeWordsList.size() < 5) {
                         beforeSize = beforeWordsList.size();
                     }
 
-                    for(int i = 0; i < beforeSize - 1; i++) {
-                        chipsBefore.get(i).setText(beforeWordsList.get(i));
+                    for (int i = 0; i < beforeSize - 1; i++) {
+                        chipsBefore.get(i).setText(beforeWordsList.get(i).getSentence());
                     }
 
-                    for(int i = 0; i < afterSize - 1; i++) {
-                        chipsAfter.get(i).setText(afterWordsList.get(i));
+                    for (int i = 0; i < afterSize - 1; i++) {
+                        chipsAfter.get(i).setText(afterWordsList.get(i).getSentence());
                     }
 
                     progressBarWords.setVisibility(View.GONE);
                     beforeWordsPoetryChipGroup.setVisibility(View.VISIBLE);
-                    afterWordsPoetryChipGroup.setVisibility(View.VISIBLE);
+//                    afterWordsPoetryChipGroup.setVisibility(View.VISIBLE);
                 }
             }
         });
